@@ -6,41 +6,59 @@ import './TodoListItem.css';
 class TodoListItem extends React.Component{
 
     state = {
-        done: true
+        done: false,
+        important: false,
     };
 
     onLabelClick = () => {
-        console.log(this.props.label);
+        this.setState((state) => {
+            return {
+                done: !state.done
+            };
+        });
+    };
+
+    onImportantBtnClick = () => {
+        this.setState(() => {
+            return{
+                important: !this.state.important
+            };
+        });
     };
 
     render() {
-        const { label, important } = this.props;
-        const { done } = this.state;
+        const { label, onDelete } = this.props;
+        const { done, important } = this.state;
+        
 
-        let classNames = 'todo-list-label';
-
+        let classNames = 'todo-list-item';
         if (done) {
             classNames += ' done';
         }
 
+        if(important){
+            classNames += ' important';
+        }
 
-        const style = {
-            color: important ? 'tomato' : 'black',
-        };
     
         return (
-            <div className="todo-list-item">
+            <div className={classNames}>
                 <span 
-                    className={classNames}
-                    style={style}
+                    className={"todo-list-label"}
                     onClick={ this.onLabelClick }
                 >
                     { label }
                 </span>
-                <button className="btn btn-outline-success btn-important">
+                <button 
+                    className="btn btn-outline-success btn-important"
+                    onClick={ this.onImportantBtnClick }
+                >
                     <i className="fa fa-star" aria-hidden="true"></i>
                 </button>
-                <button className="btn btn-outline-danger">
+                <button 
+                    className="btn btn-outline-danger"
+                    onClick={ onDelete }
+                >
                     <i className="fa fa-trash" aria-hidden="true"></i>
                 </button>
             </div>

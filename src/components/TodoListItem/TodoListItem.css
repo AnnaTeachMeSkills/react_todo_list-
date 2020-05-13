@@ -11,8 +11,11 @@
     cursor: pointer;
 }
 
-.todo-list-label.done{
+.todo-list-item.done .todo-list-label{
     text-decoration: line-through;
 }
 
-
+.todo-list-item.important .todo-list-label {
+    font-weight: bold;
+    color: #28a745;
+}
