@@ -3,3 +3,9 @@
     margin: 0 auto;
     padding: 2rem 0;
 }
+
+.searchPanel{
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}

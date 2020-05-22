@@ -5,6 +5,7 @@ import AppHeader from '../AppHeader';
 import SearchBlock from '../SearchBlock';
 import TodoList from '../TodoList';
 import ItemAddForm from '../ItemAddForm';
+import ItemStatusFilter from '../ItemStatusFilter';
 
 
 class App extends React.Component {
@@ -18,6 +19,7 @@ class App extends React.Component {
             { label: 'Learn React', important: false, done: false, id:3, },
         ],
         detectedText: '',
+        filter: "all", //all,active, done
     };
 
     
@@ -38,7 +40,6 @@ class App extends React.Component {
     } 
 
     addItem = (text) => {
-        console.log(text);
         const item = {
             label: text,
             important: false,
@@ -83,6 +84,10 @@ class App extends React.Component {
             }
         });
     } 
+
+    onSeachChange = (detectedText) => {
+        this.setState ({ detectedText });
+    }
     
     search = (arr, detectedText) => {
         if(detectedText.length === 0){
@@ -91,12 +96,31 @@ class App extends React.Component {
         return arr.filter((el) => {
             return el.label.indexOf(detectedText) > -1;
         });
+        
+    }
+
+    ItemsFilter = (arr, filterText) => {
+        switch(filterText) {
+            case "all": 
+                return arr;
+            case "active": 
+                return arr.filter((el) => !el.done);
+            case "done":
+                return arr.filter((el) => el.done);
+            default: 
+                return arr;
+        }
+    }
+
+    onItemsFilterChange = (filter) => {
+        this.setState({filter});
     }
 
     render() {
 
-        const { todoData, detectedText } = this.state;
-        const detectedItems = this.search(todoData, detectedText );
+        const { todoData, detectedText, filter } = this.state;
+        const detectedItems = this.ItemsFilter(this
+        .search(todoData, detectedText), filter);
         const done = todoData.filter((el) => el.done).length;
         const todo = todoData.filter((el) => !el.done).length;
         
@@ -104,7 +128,15 @@ class App extends React.Component {
         return(
             <div className="App">
                 <AppHeader toDo={todo}  done={done}/>
-                <SearchBlock />
+                <div className="searchPanel d-flex">
+                    <SearchBlock 
+                        onSeachChange={this.onSeachChange} 
+                    />
+                    <ItemStatusFilter
+                        filter={filter}
+                        onItemsFilterChange={this.onItemsFilterChange}
+                     />
+                </div>
                 <TodoList 
                     todoItems={ detectedItems } 
                     onDelete={ this.deleteItem}
