@@ -28,13 +28,13 @@ class TodoListItem extends React.Component{
                     { label }
                 </span>
                 <button 
-                    className="btn btn-outline-success btn-important"
+                    className="btn btn-secondary btn-important"
                     onClick={ onToggleImportant }
                 >
                     <i className="fa fa-star" aria-hidden="true"></i>
                 </button>
                 <button 
-                    className="btn btn-outline-danger"
+                    className="btn btn-danger"
                     onClick={ onDelete }
                 >
                     <i className="fa fa-trash" aria-hidden="true"></i>

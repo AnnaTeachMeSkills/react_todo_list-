@@ -8,4 +8,13 @@
     width: 40%;
     display: flex;
     justify-content: space-between;
+    font-family: 'Indie Flower', cursive, sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.headerName{
+    font-family: 'Indie Flower', cursive, sans-serif;
+    font-weight: bold;
+    font-size: 55px;
 }

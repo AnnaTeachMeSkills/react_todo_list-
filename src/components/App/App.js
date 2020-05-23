@@ -90,14 +90,13 @@ class App extends React.Component {
     }
     
     search = (arr, detectedText) => {
-        if(detectedText.length === 0){
-            return arr;
+        if (detectedText.length === 0) {
+          return arr;
         }
+    
         return arr.filter((el) => {
-            return el.label.indexOf(detectedText) > -1;
-        });
-        
-    }
+          return el.label.toUpperCase().indexOf(detectedText.toUpperCase()) > -1;});
+      }
 
     ItemsFilter = (arr, filterText) => {
         switch(filterText) {
@@ -107,6 +106,8 @@ class App extends React.Component {
                 return arr.filter((el) => !el.done);
             case "done":
                 return arr.filter((el) => el.done);
+            case "important":
+                return arr.filter((el) => el.important)
             default: 
                 return arr;
         }

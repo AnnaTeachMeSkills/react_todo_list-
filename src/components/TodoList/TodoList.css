@@ -1,3 +1,8 @@
 .todo-list  {
     margin-bottom: 0.5rem;
 }
+
+.fontStyle {
+    font-family: 'Indie Flower', cursive, sans-serif;
+    font-size: 25px;
+}

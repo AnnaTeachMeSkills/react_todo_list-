@@ -10,7 +10,7 @@ const TodoList = ( {todoItems, onDelete, onToggleImportant, onToggleDone} ) => {
         const { id, ...otherProps } = element;
 
         return (
-            <li key={id} className="list-group-item">
+            <li key={id} className="list-group-item list-group-item-secondary fontStyle">
                 <TodoListItem
                     {...otherProps}
                     onDelete={() => onDelete(id)}

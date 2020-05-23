@@ -7,7 +7,7 @@ const AppHeader = (props) => {
 
     return (
         <div className="AppHeader">
-            <h1>Todo List</h1>
+            <h1 className='headerName'>Todo List</h1>
             <p className="todoCounter">
                 <span>to do - {toDo}</span>
                 <span>done - {done}</span>

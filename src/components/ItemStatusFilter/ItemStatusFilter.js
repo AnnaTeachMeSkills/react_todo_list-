@@ -4,14 +4,14 @@ import './ItemStatusFilter.css';
 
 class ItemStatusFilter extends React.Component {
 
-    buttons = ["all","active","done"];
+    buttons = ["all","active","done", "important"];
 
     render() {
 
         const { onItemsFilterChange, filter } = this.props;
 
         const buttons = this.buttons.map((el) =>{
-            const btnClass = filter === el ? "btn-success" : "btn-outline-secondary"
+            const btnClass = filter === el ? "btn-secondary btnFont" : "btn-outline-secondary btnFont"
             return (
                 <button 
                     key={el}

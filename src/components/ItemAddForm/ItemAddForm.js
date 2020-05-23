@@ -1,5 +1,7 @@
 import React from "react";
 
+import './ItemAddForm.css';
+
 export default class ItemAddForm extends React.Component {
 
     state = {
@@ -36,7 +38,7 @@ export default class ItemAddForm extends React.Component {
                 />
                 <button 
                     type="submit"
-                    className="btn btn-outline-secondary"
+                    className="btn btn-outline-secondary btnFont"
                 >
                     Add
                 </button>
